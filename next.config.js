@@ -1,4 +1,4 @@
-git/** @type {import('next').NextConfig} */
+/** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configuration pour Vercel
   output: 'standalone',
