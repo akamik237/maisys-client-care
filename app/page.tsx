@@ -37,7 +37,7 @@ export default function LandingPage() {
   };
 
   const handleClientCare = () => {
-    router.push("/client-care/home");
+    router.push("/onboarding?type=client");
   };
   
   return (

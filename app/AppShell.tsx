@@ -10,7 +10,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const router = useRouter();
   const { user } = useUserContext();
-  const hideNav = pathname === "/" || pathname === "/login" || pathname === "/onboarding";
+  const hideNav = pathname === "/" || pathname === "/onboarding";
 
   // Redirect logic based on user state and role
   useEffect(() => {
@@ -26,15 +26,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // If user is fully authenticated (has name and role), allow them to stay on home page
+    // If user is fully authenticated (has name and role), they can access all pages
     if (user.name && user.role) {
-      console.log("User is fully authenticated");
-      // Only redirect from login page, not from home page
-      if (pathname === "/login") {
-        console.log("Redirecting from login to home");
-        router.replace("/");
-        return;
-      }
+      console.log("User is fully authenticated - access granted");
+      // No redirections needed for authenticated users
     }
   }, [user, pathname, router]);
 
@@ -49,7 +44,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       {/* Chat removed - client-care uses integrated chat in pages */}
       
       {/* ThemeToggle fixe seulement sur les pages publiques */}
-      {(pathname === "/" || pathname === "/login") && <ThemeToggle />}
+      {(pathname === "/" || pathname === "/onboarding") && <ThemeToggle />}
     </>
   );
 }
