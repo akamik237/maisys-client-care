@@ -7,7 +7,8 @@
   "env": {
     "NEXT_PUBLIC_BACKEND_URL": "/api/backend",
     "NEXT_PUBLIC_LLM_GATEWAY_URL": "/api/llm",
-    "LLM_GATEWAY_URL": "http://172.17.184.236:8000"
+    "LLM_GATEWAY_URL": "http://172.17.184.236:8000",
+    "BACKEND_URL": "http://172.17.184.236:8001"
   },
   "functions": {
     "app/api/**/*.ts": {
