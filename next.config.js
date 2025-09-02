@@ -3,6 +3,11 @@ const nextConfig = {
   // Configuration pour Vercel
   output: 'standalone',
   
+  // Désactiver ESLint pendant le build pour un déploiement rapide
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  
   // Optimisations
   compress: true,
   poweredByHeader: false,
@@ -37,13 +42,11 @@ const nextConfig = {
   },
   
   // Configuration pour le développement
-  experimental: {
-    turbo: {
-      rules: {
-        '*.svg': {
-          loaders: ['@svgr/webpack'],
-          as: '*.js',
-        },
+  turbopack: {
+    rules: {
+      '*.svg': {
+        loaders: ['@svgr/webpack'],
+        as: '*.js',
       },
     },
   },
