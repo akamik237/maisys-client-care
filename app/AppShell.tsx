@@ -17,10 +17,12 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     console.log("AppShell Debug:", { user, pathname, hideNav });
     
     if (!user) {
-      console.log("No user, redirecting to onboarding");
-      // If no user, redirect to onboarding (root page) - but allow onboarding page
-      if (pathname !== "/" && pathname !== "/onboarding") {
-        router.replace("/");
+      console.log("No user - allowing access to public pages");
+      // Allow access to landing page, login, and onboarding without user
+      // Only redirect to login if trying to access protected pages
+      if (pathname.startsWith("/client-care")) {
+        console.log("Redirecting to login for protected page");
+        router.replace("/login");
       }
       return;
     }
