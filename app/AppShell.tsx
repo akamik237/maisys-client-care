@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect } from "react";
 // Sidebar supprimée - utilisation de la sidebar intégrée dans la page
-import MAISYSChat from "../components/MAISYSChat";
+
 import { ThemeToggle } from "../components/ThemeToggle";
 import { usePathname, useRouter } from "next/navigation";
 import { useUserContext } from "../context/UserContext";
@@ -56,8 +56,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
           {children}
         </main>
       </div>
-      {/* Floating chatbot, always visible except on login/onboarding */}
-      {!hideNav && <MAISYSChat />}
+      {/* Chat removed - client-care uses integrated chat in pages */}
       
       {/* ThemeToggle fixe seulement sur les pages publiques */}
       {(pathname === "/" || pathname === "/login") && <ThemeToggle />}

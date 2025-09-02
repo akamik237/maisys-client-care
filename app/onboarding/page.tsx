@@ -1,32 +1,28 @@
 "use client";
 import MaisysLogo from "@/components/MaisysLogo";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { useEffect, Suspense } from "react";
 import Button from "@/components/ui/Button";
 import { useUserContext } from "@/context/UserContext";
 
-export default function OnboardingPage() {
+function OnboardingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const type = searchParams.get("type") as "employee" | null;
+  const type = searchParams.get("type") as "client" | null;
   const { setRole } = useUserContext();
 
   useEffect(() => {
-    if (type !== "employee") {
+    if (type !== "client") {
       router.replace("/");
     }
   }, [type, router]);
 
-  if (type !== "employee") return null;
+  if (type !== "client") return null;
 
   const handleSelect = (choice: string) => {
-    setRole("employee"); // On force le rôle employé dans le contexte
-    // Redirection spécifique selon le département
-    if (choice === "Information System Unit" || choice === "Moyens Généraux") {
-      router.push("/orchestra/dashboard");
-    } else {
-      router.push("/coworker/home");
-    }
+    setRole("client"); // For client-care, set role as client
+    // Redirect to client-care home regardless of choice
+    router.push("/client-care/home");
   };
 
   const departments = [
@@ -70,5 +66,13 @@ export default function OnboardingPage() {
         Retour à l'accueil
       </Button>
     </div>
+  );
+}
+
+export default function OnboardingPage() {
+  return (
+    <Suspense fallback={<div className="flex justify-center items-center min-h-screen">Loading...</div>}>
+      <OnboardingContent />
+    </Suspense>
   );
 }
