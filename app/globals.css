@@ -1,0 +1,217 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;700&family=Mr+Dafoe&family=Quicksand:wght@400;700&display=swap');
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #fffdf4;
+  --foreground: #080E26;
+  --color-med-blue: #ffd600;      /* med yellow */
+  --color-dark-blue: #fffbe6;     /* light yellow */
+  --color-light-blue: #ffd745;    /* dark yellow */
+  --color-sky-blue: #ffe066;      /* sky yellow */
+  --color-golden-yellow: #1a2340; /* golden blue */
+  --color-light-yellow: #2a3b8f;  /* med blue */
+
+  --font-rubik: 'Rubik', Arial, Helvetica, sans-serif;
+  --font-micro5: 'Press Start 2P', cursive;
+  --font-mrdafoe: 'Mr Dafoe', cursive;
+  --font-quicksand: 'Quicksand', Arial, Helvetica, sans-serif;
+
+  --font-sans: var(--font-rubik);
+  --font-mono: 'Fira Mono', 'Consolas', monospace;
+}
+
+.dark {
+  --background: #080E26;
+  --foreground: #ededed;
+  --color-med-blue: #111A40;
+  --color-dark-blue: #080E26;
+  --color-light-blue: #223480;
+  --color-sky-blue: #223480;
+  --color-golden-yellow: #ffd745;
+  --color-light-yellow: #FFF2CC;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  transition: background 0.3s, color 0.3s;
+}
+
+.font-micro5 {
+  font-family: var(--font-micro5);
+}
+
+.font-mrdafoe {
+  font-family: var(--font-mrdafoe);
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand);
+}
+
+code, pre, .font-mono {
+  font-family: var(--font-mono);
+}
+
+
+/* Placeholder node styles */
+.placeholder-node {
+  transition: all 0.3s ease;
+}
+
+.placeholder-node:hover {
+  transform: scale(1.1);
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1);
+}
+
+/* Light theme specific styles */
+.light {
+  --background: #fffdf4;
+  --foreground: #080E26;
+  --color-med-blue: #ffe044;
+  --color-dark-blue: #fefcf0;
+  --color-light-blue: #ffe683;
+  --color-sky-blue: #ffe066;
+  --color-golden-yellow: #1a2340;
+  --color-light-yellow: #2a3b8f;
+}
+
+/* Dark theme specific styles */
+.dark {
+  --background: #080E26;
+  --foreground: #ededed;
+  --color-med-blue: #111A40;
+  --color-dark-blue: #080E26;
+  --color-light-blue: #223480;
+  --color-sky-blue: #223480;
+  --color-golden-yellow: #ffe044;
+  --color-light-yellow: #fefcf0;
+}
+
+/* Execution overlay styles */
+.execution-overlay {
+  backdrop-filter: blur(4px);
+}
+
+/* Custom scrollbar styles using global CSS variables */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: var(--color-dark-blue);
+  border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-golden-yellow);
+  border-radius: 4px;
+  border: 1px solid var(--color-light-yellow);
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-light-blue);
+}
+
+/* Firefox scrollbar styles */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-golden-yellow) var(--color-dark-blue);
+}
+
+/* ReactFlow custom styles */
+.react-flow__node {
+  transition: all 0.3s ease;
+}
+
+.react-flow__edge {
+  transition: all 0.3s ease;
+}
+
+.react-flow__edge-path {
+  transition: all 0.3s ease;
+}
+
+.react-flow__handle {
+  transition: all 0.3s ease;
+}
+
+.react-flow__handle:hover {
+  transform: scale(1.2);
+}
+
+/* Spline Landing Page Animations */
+@keyframes blob {
+  0% {
+    transform: translate(0px, 0px) scale(1);
+  }
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
+  }
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
+  }
+  100% {
+    transform: translate(0px, 0px) scale(1);
+  }
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Glassmorphism effects */
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+/* Gradient text support */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+/* Smooth transitions */
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+/* Hover effects */
+.hover\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+.hover\:brightness-95:hover {
+  filter: brightness(0.95);
+}
+
+/* Line clamp utility */
+.line-clamp-1 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+}
