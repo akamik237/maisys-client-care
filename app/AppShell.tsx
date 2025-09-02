@@ -18,22 +18,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
     
     if (!user) {
       console.log("No user - allowing access to public pages");
-      // Allow access to landing page, login, and onboarding without user
-      // Only redirect to login if trying to access protected pages
+      // Redirect to onboarding if trying to access protected pages
       if (pathname.startsWith("/client-care")) {
-        console.log("Redirecting to login for protected page");
-        router.replace("/login");
-      }
-      return;
-    }
-
-    // If user has department but no name, they need to login
-    if (user.department && !user.name) {
-      console.log("User has department but needs login");
-      // Only redirect if not already on login or onboarding page
-      if (pathname !== "/login" && pathname !== "/" && pathname !== "/onboarding") {
-        console.log("Redirecting to login");
-        router.replace("/login");
+        console.log("Redirecting to onboarding for protected page");
+        router.replace("/onboarding?type=client");
       }
       return;
     }

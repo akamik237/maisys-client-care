@@ -79,16 +79,32 @@ export default function ClientCareHome() {
   const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || '/api/backend';
   const LLM_GATEWAY_URL = process.env.NEXT_PUBLIC_LLM_GATEWAY_URL || 'http://172.17.184.236:8000';
 
-  // Get quick action buttons for clients
+  // Get quick action buttons based on client type
   const getQuickActionButtons = () => {
-    return [
-      "Consulter mes comptes",
-      "Effectuer un virement",
-      "Demander un relevé",
-      "Contacter le support",
-      "Changer mon mot de passe",
-      "Bloquer ma carte"
-    ];
+    // @ts-ignore - clientType is added in onboarding
+    const clientType = user?.clientType;
+    
+    if (clientType === "discovery") {
+      // Actions pour nouveaux clients
+      return [
+        "Découvrir nos services",
+        "Ouvrir un compte",
+        "Contacter un conseiller",
+        "Simuler un crédit",
+        "Prendre rendez-vous",
+        "Nos avantages"
+      ];
+    } else {
+      // Actions pour clients existants (plus avancées)
+      return [
+        "Consulter mes comptes",
+        "Effectuer un virement",
+        "Demander un relevé",
+        "Historique des transactions",
+        "Gérer mes cartes",
+        "Support technique"
+      ];
+    }
   };
 
   // Initialize conversations from backend

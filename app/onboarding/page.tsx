@@ -9,7 +9,7 @@ function OnboardingContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const type = searchParams.get("type") as "client" | null;
-  const { setRole } = useUserContext();
+  const { setRole, setUser } = useUserContext();
 
   useEffect(() => {
     if (type !== "client") {
@@ -21,47 +21,49 @@ function OnboardingContent() {
 
   const handleSelect = (choice: string) => {
     setRole("client"); // For client-care, set role as client
-    // Redirect to client-care home regardless of choice
+    
+    // Set user with choice for personalized experience
+    const userData = {
+      name: choice === "discovery" ? "Nouveau Client" : "Client Existant",
+      role: "client" as const,
+      clientType: choice // "discovery" or "existing-client"
+    };
+    
+    // Use setUser to save complete user data
+    setUser(userData);
+    
+    // Redirect to chat with personalized experience
     router.push("/client-care/home");
   };
 
-  const departments = [
-    "Top Management",
-    "Risk Management Unit",
-    "Compliance and Anti-Money Laundering",
-    "Permanent Control Unit",
-    "Information System Unit",
-    "Credit Unit",
-    "PME",
-    "Agribanking",
-    "Business Network",
-    "Acouting and Financial Unit",
-    "Marketing and Communication Unit",
-    "Operation and Treasury Unit",
-    "Moyens Généraux",
-    "Legal and Governance Unit",
-    "Human Capital Unit",
-  ];
   return (
     <div className="rounded- p-8 max-w-3xl mx-auto flex flex-col items-center text-[var(--foreground)]">
       <span className="text-xs text-[var(--color-light-blue)] mb-2">Onboarding</span>
       <MaisysLogo size={56} />
-      <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mt-4 mb-2" style={{fontFamily: 'Rubik, var(--font-sans)'}}>A quel département appartenez au sein de la Regionale <br/> ≡ BANK ? ≡</h2>
-      <div className="flex flex-wrap justify-center gap-3 mt-6">
-        {departments.map(dep => (
-          <button
-            key={dep}
-            className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-4 py-2 font-medium text-sm hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[180px] transition"
-            onClick={() => handleSelect(dep)}
-          >
-            {dep}
-          </button>
-        ))}
+      <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mt-4 mb-2" style={{fontFamily: 'Rubik, var(--font-sans)'}}>
+        Êtes-vous déjà familier avec <br/> 
+        les services de la Regionale <br/> 
+        ≡ BANK ? ≡
+      </h2>
+      
+      <div className="flex flex-col items-center gap-4 mt-8">
+        <button
+          className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-8 py-4 font-medium text-base hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[300px] transition"
+          onClick={() => handleSelect("discovery")}
+        >
+          Je viens de découvrir La Regionale
+        </button>
+        <button
+          className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-8 py-4 font-medium text-base hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[300px] transition"
+          onClick={() => handleSelect("existing-client")}
+        >
+          Oui, Je suis un client de la banque
+        </button>
       </div>
 
       <Button
         onClick={() => router.replace("/")}
-        className="mt-4 underline text-[var(--color-sky-blue)]"
+        className="mt-8 underline text-[var(--color-sky-blue)]"
       >
         Retour à l'accueil
       </Button>
