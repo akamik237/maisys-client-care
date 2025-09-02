@@ -27,25 +27,19 @@ export default function Login() {
         (username === "admin" && password === "DeOrEr46") ||
         (username === "laregionalesa\\dimitri.kimaka" && password === "DeOrEr46")
       ) {
-        // Determine role based on username
-        const role = username === "admin" ? "admin" : "employee";
+        // For client-care, treat all users as clients
         const newUser = {
           name: username,
-          role: role as "admin" | "employee",
+          role: "client" as const,
           department: user?.department
         };
         
         console.log("Login successful, setting user:", newUser);
         setUser(newUser);
         
-        // Redirect based on role and department
-        if (role === "admin") {
-          console.log("Redirecting admin to orchestra dashboard");
-          router.push("/orchestra/dashboard");
-        } else {
-          console.log("Redirecting employee to coworker home");
-          router.push("/coworker/home");
-        }
+        // Redirect to client-care home
+        console.log("Redirecting to client-care home");
+        router.push("/client-care/home");
       } else {
         console.log("Login failed: invalid credentials");
         setError("Identifiants incorrects. Veuillez réessayer.");
