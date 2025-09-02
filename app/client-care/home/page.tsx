@@ -115,10 +115,10 @@ export default function ClientCareHome() {
     }
   };
 
-  // Send message to LLM gateway using the same system as the widget
+  // Send message to LLM gateway using API proxy
   const sendMessageToAgent = async (message: string) => {
     try {
-      const response = await fetch(`${LLM_GATEWAY_URL}/query`, {
+      const response = await fetch('/api/llm/query', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
