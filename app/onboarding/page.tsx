@@ -53,10 +53,25 @@ function OnboardingContent() {
     <div className="min-h-screen flex flex-col items-center justify-center p-8 text-[var(--foreground)]">
       <span className="text-xs text-[var(--color-light-blue)] mb-4">Onboarding</span>
       
+      {/* Logos MAISYS et La Regionale Bank */}
+      <div className="flex items-center justify-center gap-8 mb-8">
+        <img 
+          src="/Logo-Maisys.png" 
+          alt="MAISYS Logo" 
+          className="h-16 w-auto object-contain"
+        />
+        <div className="w-px h-12 bg-[var(--color-golden-yellow)]/30"></div>
+        <img 
+          src="/logo-laregionale.png" 
+          alt="La Regionale Bank Logo" 
+          className="h-16 w-auto object-contain"
+        />
+      </div>
+      
       <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mb-8" style={{fontFamily: 'Rubik, var(--font-sans)'}}>
         Êtes-vous déjà familier avec <br/> 
         les services de la Regionale <br/> 
-        <div className="flex justify-center items-center gap-2 mt-2">
+        <div className="flex justify-center items-center gap-8 mt-2">
           <div className="flex flex-col gap-0.5">
             <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
             <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>

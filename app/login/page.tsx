@@ -51,8 +51,18 @@ export default function Login() {
     <div className="min-h-screen flex flex-col items-center justify-center w-full bg-[var(--background)] text-[var(--foreground)] px-2 py-8">
       <div className="w-full max-w-4xl flex flex-col gap-6">
         {/* Header */}
-        <div className="flex items-center justify-center mb-4">
-          <MaisysLogo size={56} />
+        <div className="flex items-center justify-center gap-8 mb-4">
+          <img 
+            src="/Logo-Maisys.png" 
+            alt="MAISYS Logo" 
+            className="h-16 w-auto object-contain"
+          />
+          <div className="w-px h-12 bg-[var(--color-golden-yellow)]/30"></div>
+          <img 
+            src="/logo-laregionale.png" 
+            alt="La Regionale Bank Logo" 
+            className="h-16 w-auto object-contain"
+          />
         </div>
         
       

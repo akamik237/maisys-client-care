@@ -47,12 +47,16 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             {/* Brand/Logo Section */}
-            <div className="flex items-center space-x-3">
+            <div className="flex items-center space-x-4">
               <div className="bg-[var(--color-golden-yellow)] rounded-xl px-4 py-2 flex items-center space-x-2 shadow-md">
                 <img src="/Logo-Maisys.png" alt="MAISYS" className="w-6 h-6" />
                 <span className="text-[var(--color-dark-blue)] font-bold text-lg">MAISYS</span>
               </div>
-              <span className="text-[var(--foreground)] font-semibold text-lg">Client Care</span>
+              <div className="w-px h-8 bg-[var(--color-golden-yellow)]/30"></div>
+              <div className="flex items-center space-x-2">
+                <img src="/logo-laregionale.png" alt="La Regionale Bank" className="h-8 w-auto object-contain" />
+                <span className="text-[var(--foreground)] font-semibold text-lg">Client Care</span>
+              </div>
             </div>
 
             {/* Navigation Links */}
@@ -414,9 +418,13 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <img src="/Logo-Maisys.png" alt="MAISYS" className="w-8 h-8" />
-                <span className="text-[var(--foreground)] font-bold text-xl">MAISYS</span>
+              <div className="flex items-center space-x-4 mb-4">
+                <div className="flex items-center space-x-2">
+                  <img src="/Logo-Maisys.png" alt="MAISYS" className="w-8 h-8" />
+                  <span className="text-[var(--foreground)] font-bold text-xl">MAISYS</span>
+                </div>
+                <div className="w-px h-6 bg-[var(--color-golden-yellow)]/30"></div>
+                <img src="/logo-laregionale.png" alt="La Regionale Bank" className="h-6 w-auto object-contain" />
               </div>
               <p className="text-[var(--foreground)]/70">
                 Votre assistant bancaire intelligent pour une expérience client exceptionnelle.
