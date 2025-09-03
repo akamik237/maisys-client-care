@@ -4,6 +4,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, Suspense } from "react";
 import Button from "@/components/ui/Button";
 import { useUserContext } from "@/context/UserContext";
+import SobadjoRobot from "@/components/Sobadjo";
 
 function OnboardingContent() {
   const router = useRouter();
@@ -36,34 +37,49 @@ function OnboardingContent() {
     router.push("/client-care/home");
   };
 
+  const handleDepartmentSelect = (department: string) => {
+    // Détermine le type de client basé sur le département sélectionné
+    const clientType = department.includes("Découverte") || department.includes("Nouveau") ? "discovery" : "existing-client";
+    handleSelect(clientType);
+  };
+
+  // Définition des départements/boutons pour le robot
+  const clientDepartments = [
+    { short: "Nouveau", full: "Je viens de découvrir La Regionale" },
+    { short: "Client", full: "Oui, Je suis un client de la banque" }
+  ];
+
   return (
-    <div className="rounded- p-8 max-w-3xl mx-auto flex flex-col items-center text-[var(--foreground)]">
-      <span className="text-xs text-[var(--color-light-blue)] mb-2">Onboarding</span>
-      <MaisysLogo size={56} />
-      <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mt-4 mb-2" style={{fontFamily: 'Rubik, var(--font-sans)'}}>
+    <div className="min-h-screen flex flex-col items-center justify-center p-8 text-[var(--foreground)]">
+      <span className="text-xs text-[var(--color-light-blue)] mb-4">Onboarding</span>
+      
+      <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mb-8" style={{fontFamily: 'Rubik, var(--font-sans)'}}>
         Êtes-vous déjà familier avec <br/> 
         les services de la Regionale <br/> 
-        ≡ BANK ? ≡
+        <div className="flex justify-center items-center gap-1 mt-2">
+          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+          <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
+          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+          <span className="mx-2 text-[var(--color-light-yellow)]">Bank?</span>
+          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+          <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
+          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+        </div>
       </h2>
-      
-      <div className="flex flex-col items-center gap-4 mt-8">
-        <button
-          className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-8 py-4 font-medium text-base hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[300px] transition"
-          onClick={() => handleSelect("discovery")}
-        >
-          Je viens de découvrir La Regionale
-        </button>
-        <button
-          className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-8 py-4 font-medium text-base hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[300px] transition"
-          onClick={() => handleSelect("existing-client")}
-        >
-          Oui, Je suis un client de la banque
-        </button>
+
+      {/* Robot Sobadjo avec boutons flottants */}
+      <div className="relative w-full max-w-4xl h-96 mb-8">
+        <SobadjoRobot
+          className="w-full h-full"
+          showDepartments={true}
+          departments={clientDepartments}
+          onDepartmentSelect={handleDepartmentSelect}
+        />
       </div>
 
       <Button
         onClick={() => router.replace("/")}
-        className="mt-8 underline text-[var(--color-sky-blue)]"
+        className="mt-4 underline text-[var(--color-sky-blue)]"
       >
         Retour à l'accueil
       </Button>
