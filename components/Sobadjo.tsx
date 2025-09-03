@@ -161,11 +161,10 @@ export default function SobadjoRobot({
               >
                 <button
                   onClick={() => handleDepartmentClick(dept.full)}
-                  className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-3 py-2 font-medium text-sm hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[70px] max-w-[70px] hover:max-w-[280px] transition-all duration-300 ease-in-out overflow-hidden whitespace-nowrap group shadow-lg hover:shadow-xl"
+                  className="bg-[var(--color-dark-blue)] text-[var(--foreground)] rounded-lg px-4 py-3 font-medium text-sm hover:bg-[var(--color-sky-blue)] border-2 border-[var(--color-sky-blue)] min-w-[280px] transition-all duration-300 ease-in-out shadow-lg hover:shadow-xl whitespace-nowrap"
                   title={dept.full}
                 >
-                  <span className="block group-hover:hidden">{dept.short}</span>
-                  <span className="hidden group-hover:block">{dept.full}</span>
+                  {dept.full}
                 </button>
               </div>
             );

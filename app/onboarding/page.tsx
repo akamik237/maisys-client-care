@@ -56,14 +56,18 @@ function OnboardingContent() {
       <h2 className="text-2xl font-bold text-[var(--color-light-yellow)] text-center mb-8" style={{fontFamily: 'Rubik, var(--font-sans)'}}>
         Êtes-vous déjà familier avec <br/> 
         les services de la Regionale <br/> 
-        <div className="flex justify-center items-center gap-1 mt-2">
-          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
-          <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
-          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
-          <span className="mx-2 text-[var(--color-light-yellow)]">Bank?</span>
-          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
-          <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
-          <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+        <div className="flex justify-center items-center gap-2 mt-2">
+          <div className="flex flex-col gap-0.5">
+            <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+            <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
+            <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+          </div>
+          <span className="mx-3 text-[var(--color-light-yellow)]">Bank?</span>
+          <div className="flex flex-col gap-0.5">
+            <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+            <div className="w-6 h-0.5 bg-[var(--color-golden-yellow)]"></div>
+            <div className="w-5 h-0.5 bg-[var(--color-light-yellow)]"></div>
+          </div>
         </div>
       </h2>
 
